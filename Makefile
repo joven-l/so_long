@@ -38,6 +38,7 @@ $(MLX_A):
 clean:
 	rm -f $(OBJECTS)
 	$(MAKE) -C $(LIBFT_DIR) clean
+	$(MAKE) -C $(MLX_DIR) clean
 
 fclean: clean
 	rm -f $(NAME)
