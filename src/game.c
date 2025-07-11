@@ -6,7 +6,7 @@
 /*   By: joloo <joloo@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/10 19:04:07 by joloo             #+#    #+#             */
-/*   Updated: 2025/07/11 15:42:04 by joloo            ###   ########.fr       */
+/*   Updated: 2025/07/11 18:59:43 by joloo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,16 @@ void	move(t_data *data, int x, int y)
 		mlx_put_image_to_window(data->mlx, data->win, data->img['O'],
 			data->exit.x * PXL, data->exit.y * PXL);
 	}
-	if ((c == 'E' && data->coll == 0) || c == 'X')
+	if (c == 'E' && data->coll == 0)
+	{
+		ft_printf("you win");
 		free_exit(data, NULL, 0);
+	}
+	if (c == 'X')
+	{
+		ft_printf("you lose");
+		free_exit(data, NULL, 0);
+	}
 	data->moves++;
 	display_moves(data, data->moves);
 	update_pos(data, x, y);
