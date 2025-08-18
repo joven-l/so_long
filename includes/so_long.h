@@ -6,7 +6,7 @@
 /*   By: joloo <joloo@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/26 18:59:25 by joloo             #+#    #+#             */
-/*   Updated: 2025/07/11 15:42:15 by joloo            ###   ########.fr       */
+/*   Updated: 2025/08/18 16:30:14 by joloo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,12 @@ typedef struct s_data
 	void	*win;
 	void	*img[128];
 	void	*p_img[4];
+	void	*num[10];
 }	t_data;
+
+// conv_sprites.c
+void	conv_textures(t_data *data);
+void	conv_more(t_data *data);
 
 // game.c
 void	move(t_data *data, int x, int y);
@@ -61,8 +66,7 @@ void	display_moves(t_data *data, int moves);
 void	init(t_data *data, char *file);
 void	read_map(t_data *data, char *file);
 void	init_mlx(t_data *data);
-void	draw_img(t_data *data);
-void	conv_textures(t_data *data);
+void	draw_map(t_data *data);
 
 // input.c
 int		handle_input(int key, t_data *data);
@@ -76,9 +80,13 @@ void	check_tile(t_data *data, int i, int j);
 void	check_path(t_data *data);
 void	flood_fill(t_data *data, char **map, int x, int y);
 
+// shorten.c
+void	*convert_xpm(t_data *data, char *path);
+void	destroy_image(t_data *data, void *img);
+
 // so_long_utils.c
 void	free_exit(t_data *data, char *message, int exit_code);
 void	free_img(t_data *data);
-void	conv_more(t_data *data);
+void	free_more_img(t_data *data);
 
 #endif

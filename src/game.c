@@ -6,7 +6,7 @@
 /*   By: joloo <joloo@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/10 19:04:07 by joloo             #+#    #+#             */
-/*   Updated: 2025/07/11 18:59:43 by joloo            ###   ########.fr       */
+/*   Updated: 2025/08/18 16:29:06 by joloo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,11 +56,19 @@ void	update_pos(t_data *data, int x, int y)
 void	display_moves(t_data *data, int moves)
 {
 	char	*str;
+	int		i;
+	int		digit;
 
 	str = ft_itoa(moves);
+	i = 0;
 	if (str == NULL)
 		free_exit(data, "Error\nitoa fail\n", 1);
-	mlx_put_image_to_window(data->mlx, data->win, data->img['1'], 0, 0);
-	mlx_string_put(data->mlx, data->win, 16, 32, 0x00FFFFFF, str);
+	while (str[i] != '\0')
+	{
+		digit = str[i] - '0';
+		mlx_put_image_to_window(data->mlx, data->win,
+			data->num[digit], i * 24, 24);
+		i++;
+	}
 	free(str);
 }

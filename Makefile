@@ -1,8 +1,8 @@
 NAME = so_long
-# CC=gcc
-# CFLAGS=-Wall -Wextra -Werror -ggdb3
-CC=cc
-CFLAGS=-Wall -Wextra -Werror
+CC=gcc
+CFLAGS=-Wall -Wextra -Werror -g
+# CC=cc
+# CFLAGS=-Wall -Wextra -Werror
 INC_DIR = includes
 IFLAGS = -I$(INC_DIR)
 LIBFT_DIR = libft
@@ -12,10 +12,12 @@ MLX_A = $(MLX_DIR)/libmlx.a
 SRC_DIR = src
 MLX= -Lminilibx-linux -lmlx -lXext -lX11 -lm -lz
 SOURCES= \
+$(SRC_DIR)/conv_sprites.c \
 $(SRC_DIR)/game.c \
 $(SRC_DIR)/init.c \
 $(SRC_DIR)/input.c \
 $(SRC_DIR)/map.c \
+$(SRC_DIR)/shorten.c \
 $(SRC_DIR)/so_long_utils.c \
 $(SRC_DIR)/so_long.c 
 
