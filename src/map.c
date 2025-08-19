@@ -6,7 +6,7 @@
 /*   By: joloo <joloo@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 19:22:09 by joloo             #+#    #+#             */
-/*   Updated: 2025/07/11 15:19:15 by joloo            ###   ########.fr       */
+/*   Updated: 2025/08/19 14:11:20 by joloo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,8 @@ void	check_tile(t_data *data, int i, int j)
 		data->player.x = j;
 		data->player.y = i;
 	}
+	if (c == 'X')
+		add_enemy(data, j, i);
 }
 
 void	check_path(t_data *data)

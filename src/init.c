@@ -6,7 +6,7 @@
 /*   By: joloo <joloo@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/26 18:58:20 by joloo             #+#    #+#             */
-/*   Updated: 2025/08/18 11:12:16 by joloo            ###   ########.fr       */
+/*   Updated: 2025/08/19 13:59:35 by joloo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,15 +79,37 @@ void	draw_map(t_data *data)
 		j = 0;
 		while (j < data->width)
 		{
-			mlx_put_image_to_window(data->mlx, data->win,
-				data->img[(int)data->map[i][j]], j * PXL, i * PXL);
+			put_image(data, data->img[(int)data->map[i][j]],
+				j * PXL, i * PXL);
 			j++;
 		}
 		i++;
 	}
 	if (data->coll == 0)
 	{
-		mlx_put_image_to_window(data->mlx, data->win, data->img['O'],
+		put_image(data, data->img['O'],
 			data->exit.x * PXL, data->exit.y * PXL);
+	}
+}
+
+void	add_enemy(t_data *data, int x, int y)
+{
+	t_enemy	*new;
+	t_enemy	*temp;
+
+	temp = data->enemy;
+	new = malloc(sizeof(t_enemy));
+	if (new == NULL)
+		free_exit(data, "malloc failure", 1);
+	new->pos.x = x;
+	new->pos.y = y;
+	new->next = NULL;
+	if (data->enemy == NULL)
+		data->enemy = new;
+	else
+	{
+		while (temp->next != NULL)
+			temp = temp->next;
+		temp->next = new;
 	}
 }

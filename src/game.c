@@ -6,7 +6,7 @@
 /*   By: joloo <joloo@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/10 19:04:07 by joloo             #+#    #+#             */
-/*   Updated: 2025/08/18 16:29:06 by joloo            ###   ########.fr       */
+/*   Updated: 2025/08/19 14:13:16 by joloo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,17 +23,16 @@ void	move(t_data *data, int x, int y)
 		data->coll--;
 	if (data->coll == 0)
 	{
-		mlx_put_image_to_window(data->mlx, data->win, data->img['O'],
+		put_image(data, data->img['O'],
 			data->exit.x * PXL, data->exit.y * PXL);
 	}
 	if (c == 'E' && data->coll == 0)
 	{
-		ft_printf("you win");
 		free_exit(data, NULL, 0);
 	}
 	if (c == 'X')
 	{
-		ft_printf("you lose");
+		ft_printf("You lose\n");
 		free_exit(data, NULL, 0);
 	}
 	data->moves++;
@@ -43,12 +42,12 @@ void	move(t_data *data, int x, int y)
 
 void	update_pos(t_data *data, int x, int y)
 {
-	mlx_put_image_to_window(data->mlx, data->win, data->img['0'],
+	put_image(data, data->img['0'],
 		data->player.x * PXL, data->player.y * PXL);
 	data->map[data->player.y][data->player.x] = '0';
 	data->player.x += x;
 	data->player.y += y;
-	mlx_put_image_to_window(data->mlx, data->win, data->img['P'],
+	put_image(data, data->img['P'],
 		data->player.x * PXL, data->player.y * PXL);
 	data->map[data->player.y][data->player.x] = 'P';
 }
@@ -66,8 +65,7 @@ void	display_moves(t_data *data, int moves)
 	while (str[i] != '\0')
 	{
 		digit = str[i] - '0';
-		mlx_put_image_to_window(data->mlx, data->win,
-			data->num[digit], i * 24, 24);
+		put_image(data, data->num[digit], i * 24, 24);
 		i++;
 	}
 	free(str);

@@ -6,7 +6,7 @@
 /*   By: joloo <joloo@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 18:04:27 by joloo             #+#    #+#             */
-/*   Updated: 2025/08/18 16:23:37 by joloo            ###   ########.fr       */
+/*   Updated: 2025/08/19 13:34:22 by joloo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,8 +50,12 @@ void	free_img(t_data *data)
 
 void	free_more_img(t_data *data)
 {
-	destroy_image(data, data->p_img[0]);
-	destroy_image(data, data->p_img[1]);
-	destroy_image(data, data->p_img[2]);
-	destroy_image(data, data->p_img[3]);
+	destroy_image(data, data->p_img_r[0]);
+	destroy_image(data, data->p_img_r[1]);
+	destroy_image(data, data->p_img_r[2]);
+	destroy_image(data, data->p_img_r[3]);
+	destroy_image(data, data->p_img_l[0]);
+	destroy_image(data, data->p_img_l[1]);
+	destroy_image(data, data->p_img_l[2]);
+	destroy_image(data, data->p_img_l[3]);
 }
