@@ -6,7 +6,7 @@
 /*   By: joloo <joloo@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/10 19:04:09 by joloo             #+#    #+#             */
-/*   Updated: 2025/08/19 14:38:05 by joloo            ###   ########.fr       */
+/*   Updated: 2025/08/19 14:44:07 by joloo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int	handle_input(int key, t_data *data)
 		move(data, 0, -1);
 	if (key == A || key == LEFT)
 	{
-		data->last_move = -1;
+		data->last_move = 1;
 		data->img['P'] = data->p_img_l[data->anim_index];
 		move(data, -1, 0);
 	}
