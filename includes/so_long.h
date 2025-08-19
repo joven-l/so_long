@@ -6,7 +6,7 @@
 /*   By: joloo <joloo@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/26 18:59:25 by joloo             #+#    #+#             */
-/*   Updated: 2025/08/19 14:36:51 by joloo            ###   ########.fr       */
+/*   Updated: 2025/08/19 15:20:19 by joloo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,5 +112,6 @@ void	put_image(t_data *data, void *img, int x, int y);
 void	free_exit(t_data *data, char *message, int exit_code);
 void	free_img(t_data *data);
 void	free_more_img(t_data *data);
+void	free_enemy(t_data *data);
 
 #endif

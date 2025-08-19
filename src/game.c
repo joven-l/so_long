@@ -6,7 +6,7 @@
 /*   By: joloo <joloo@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/10 19:04:07 by joloo             #+#    #+#             */
-/*   Updated: 2025/08/19 14:13:16 by joloo            ###   ########.fr       */
+/*   Updated: 2025/08/19 15:17:29 by joloo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void	move(t_data *data, int x, int y)
 	}
 	if (c == 'E' && data->coll == 0)
 	{
-		free_exit(data, NULL, 0);
+		free_exit(data, "You win\n", 0);
 	}
 	if (c == 'X')
 	{

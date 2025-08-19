@@ -6,7 +6,7 @@
 /*   By: joloo <joloo@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 18:04:27 by joloo             #+#    #+#             */
-/*   Updated: 2025/08/19 13:34:22 by joloo            ###   ########.fr       */
+/*   Updated: 2025/08/19 15:20:07 by joloo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ void	free_exit(t_data *data, char *message, int exit_code)
 	if (data->mlx != NULL)
 		free(data->mlx);
 	ft_free_str_arr(data->map);
+	free_enemy(data);
 	exit(exit_code);
 }
 
@@ -58,4 +59,17 @@ void	free_more_img(t_data *data)
 	destroy_image(data, data->p_img_l[1]);
 	destroy_image(data, data->p_img_l[2]);
 	destroy_image(data, data->p_img_l[3]);
+}
+
+void	free_enemy(t_data *data)
+{
+	t_enemy *node;
+	t_enemy	*temp;
+	node = data->enemy;
+	while (node != NULL)
+	{
+		temp = node->next;
+		free(node);
+		node = temp;
+	}
 }
