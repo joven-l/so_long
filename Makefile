@@ -1,14 +1,16 @@
 NAME = so_long
-CC=gcc
-CFLAGS=-Wall -Wextra -Werror -g -O0
-# CC=cc
-# CFLAGS=-Wall -Wextra -Werror
+# CC=gcc
+# CFLAGS=-Wall -Wextra -Werror -g -O0
+CC=cc
+CFLAGS=-Wall -Wextra -Werror
 INC_DIR = includes
 IFLAGS = -I$(INC_DIR)
 LIBFT_DIR = libft
 LIBFT_A = $(LIBFT_DIR)/libft.a
+MLX_DIR = minilibx-linux
+MLX_A = $(MLX_DIR)/libmlx.a
 SRC_DIR = src
-MLX= -lmlx -lXext -lX11 -lm -lz
+MLX= -Lminilibx-linux -lmlx -lXext -lX11 -lm -lz
 SOURCES= \
 $(SRC_DIR)/background.c \
 $(SRC_DIR)/conv_sprites.c \
@@ -25,18 +27,22 @@ all: $(NAME)
 
 OBJECTS = $(SOURCES:.c=.o)
 
-$(NAME) : $(OBJECTS) $(LIBFT_A)
-	$(CC) $(CFLAGS) $(IFLAGS) $(OBJECTS) $(LIBFT_A) $(MLX) -o $(NAME) 
+$(NAME) : $(OBJECTS) $(LIBFT_A) $(MLX_A)
+	$(CC) $(CFLAGS) $(IFLAGS) -Iminilibx-linux $(OBJECTS) $(LIBFT_A) $(MLX) $(MLX_A) -o $(NAME) 
 
 $(LIBFT_A):
 	$(MAKE) -C $(LIBFT_DIR) all
 
+$(MLX_A):
+	$(MAKE) -C $(MLX_DIR) all
+
 %.o : %.c
-	$(CC) $(CFLAGS) $(IFLAGS) -c $< -o $@
+	$(CC) $(CFLAGS) $(IFLAGS) -Iminilibx-linux -c $< -o $@
 
 clean:
 	rm -f $(OBJECTS)
 	$(MAKE) -C $(LIBFT_DIR) clean
+	$(MAKE) -C $(MLX_DIR) clean
 
 fclean: clean
 	rm -f $(NAME)
